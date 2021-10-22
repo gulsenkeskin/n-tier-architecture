@@ -3,6 +3,7 @@ package nLayerdArchitecture.business.concretes;
 import java.util.List;
 
 import nLayerdArchitecture.business.abstracts.ProductService;
+import nLayerdArchitecture.core.LoggerService;
 import nLayerdArchitecture.dataAccess.abstracts.ProductDao;
 import nLayerdArchitecture.entities.concretes.Product;
 
@@ -10,10 +11,12 @@ public class ProductManager implements ProductService {
 	
 	//dependency injection
 	private ProductDao productDao;
+	private LoggerService loggerService;
 
-	public ProductManager(ProductDao productDao) {
+	public ProductManager(ProductDao productDao, LoggerService loggerService) {
 		super();
 		this.productDao = productDao;
+		this.loggerService= loggerService;
 	}
 
 	@Override
@@ -25,6 +28,7 @@ public class ProductManager implements ProductService {
 			return;
 		}
 		this.productDao.add(product);
+		this.loggerService.logToSystem("product added : "+ product.getName());
 
 	}
 
