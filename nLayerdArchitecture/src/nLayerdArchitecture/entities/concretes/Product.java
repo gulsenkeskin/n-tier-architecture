@@ -1,6 +1,8 @@
 package nLayerdArchitecture.entities.concretes;
 
-public class Product {
+import nLayerdArchitecture.entities.abstracts.Entity;
+
+public class Product implements Entity{
 	private int id;
 	private int categoryId;
 	private String name;
